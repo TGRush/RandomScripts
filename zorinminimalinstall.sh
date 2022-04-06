@@ -11,11 +11,11 @@ lite() {
 if [ -n "$1" ]; then
     case "$1" in
     --core)
-    core
-    ;;
+        core
+        ;;
     --lite)
-    lite
-    ;;
+        lite
+        ;;
     esac
     shift
 else
