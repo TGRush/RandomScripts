@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# A script to install VSCodium, mostly just copy/paste from official website, abandoned as I now use Micro or Elementary's code editor
+
 debian() {
     wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg |
         gpg --dearmor |

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This removes a lot of pre-installed programs on ZorinOS, to attempt to resemble a "Minimal" install. Kind of like on Ubuntu
+
 core() {
     sudo apt remove -y --auto-remove gnome-{sudoku,mines,mahjongg,maps,sound-recorder,todo,weather} *quadrapassel* aisleriot brasero remmina gimp *libreoffice* evolution rhythmbox pitivi cheese
 }
