@@ -22,6 +22,14 @@ rmdebian() {
     exit 0
 }
 
+help() {
+	echo "Syntax: $0 --arguments"
+	echo "Available arguments:"
+	echo "--install-debian		Install under debian/ubuntu-based systems"
+	echo "--remove debian		Purge VSCodium and remove the repositories"
+	echo "--help				show this help page"
+}
+
 if [ -n "$1" ]; then
     case "$1" in
     --install-debian)
@@ -30,11 +38,15 @@ if [ -n "$1" ]; then
     --remove-debian)
         rmdebian
         ;;
+    --help)
+    	help
+    	;;
     *)
-        echo "tf u doin, that's not an argument!?"
+        echo "use --install-debian to install."
+        echo "or use --remove-debian to uninstall."
         ;;
     esac
     shift
 else
-    echo "give some actual arguments m8"
+    echo "use --install-debian or --remove-debian."
 fi

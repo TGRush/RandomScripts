@@ -10,6 +10,14 @@ lite() {
     sudo apt remove -y --auto-remove gnome-{sudoku,mines,mahjongg,maps,sound-recorder,weather} *quadrapassel* aisleriot xfburn remmina gimp *libreoffice* evolution rhythmbox pitivi cheese
 }
 
+help() {
+	echo "Syntax: $0 --arguments"
+	echo "Available arguments:"
+	echo "--help		Show this help page"
+	echo "--core		Minimalise the Core edition of Zorin"
+	echo "--lite		Minimalise the Lite edition of Zorin"
+}
+
 if [ -n "$1" ]; then
     case "$1" in
     --core)
@@ -18,8 +26,11 @@ if [ -n "$1" ]; then
     --lite)
         lite
         ;;
+    --help)
+    	help
+    	;;
     esac
     shift
 else
-    echo 'ayo u got no arguments :|'
+    echo 'use --help to see available options'
 fi
