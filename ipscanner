@@ -20,10 +20,12 @@ uline="\e[4m"
 # shellcheck disable=SC2034
 reset="\e[0m"
 
+# shellcheck disable=SC2120
+function runNmap() {
 if [ -n "$1" ]; then
 	echo -e "${blue}==> Starting nmap with IP $1!${reset}"
 	echo -e "${red}########################################${reset}"
-	nmap -sP $1/24
+	nmap -sP "$1/24"
 	echo -e "${red}########################################${reset}"
 else
 	echo -e "${blue}==> Enter the range of IPs you want to scan, in a format like this:${reset}"
@@ -31,6 +33,9 @@ else
 	read -r -p "Your IP: " IPs
 	echo -e "${blue}==> Starting nmap with IP $IPs!${reset}"
 	echo -e "${red}########################################${reset}"
-	nmap -sP $IPs/24
+	nmap -sP "$IPs/24"
 	echo -e "${red}########################################${reset}"
 fi
+}
+
+runNmap
