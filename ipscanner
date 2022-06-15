@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# This is intended for me as a shortcut/wrapper to nmap -sP to scan for IPs in my network
+# the reason it isn't consistent with other files (not having .sh) is so that I can more easily push it to ~/.local/bin/
+# without confusing myself
+
+# Ansi color code variables
+# shellcheck disable=SC2034
+red="\e[0;91m"
+# shellcheck disable=SC2034
+blue="\e[0;94m"
+# shellcheck disable=SC2034
+green="\e[0;92m"
+# shellcheck disable=SC2034
+white="\e[0;97m"
+# shellcheck disable=SC2034
+bold="\e[1m"
+# shellcheck disable=SC2034
+uline="\e[4m"
+# shellcheck disable=SC2034
+reset="\e[0m"
+
+if [ -n "$1" ]; then
+	echo -e "${blue}==> Starting nmap with IP $1!${reset}"
+	echo -e "${red}########################################${reset}"
+	nmap -sP $1/24
+	echo -e "${red}########################################${reset}"
+else
+	echo -e "${blue}==> Enter the range of IPs you want to scan, in a format like this:${reset}"
+	echo -e "${blue}192.168.0.1 or 192.168.178.1...${reset}"
+	read -r -p "Your IP: " IPs
+	echo -e "${blue}==> Starting nmap with IP $IPs!${reset}"
+	echo -e "${red}########################################${reset}"
+	nmap -sP $IPs/24
+	echo -e "${red}########################################${reset}"
+fi
