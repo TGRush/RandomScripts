@@ -21,7 +21,6 @@ uline="\e[4m"
 reset="\e[0m"
 
 # shellcheck disable=SC2120
-function runNmap() {
 if [ -n "$1" ]; then
 	echo -e "${blue}==> Starting nmap with IP $1!${reset}"
 	echo -e "${red}########################################${reset}"
@@ -36,6 +35,3 @@ else
 	nmap -sP "$IPs/24"
 	echo -e "${red}########################################${reset}"
 fi
-}
-
-runNmap
