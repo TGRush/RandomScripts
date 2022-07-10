@@ -55,6 +55,7 @@ flatpakSupport() {
 			echo "ABORTING!"
 			exit 0
 			;;
+	esac
 }
 
 help() {
