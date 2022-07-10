@@ -40,6 +40,32 @@ reset() {
 	echo "All done! you might need to restart some applications."
 }
 
+flatpakSupport() {
+	echo "Are you sure you want to enable Flatpak support?"
+	echo "This will add some overrides to Flatpak's configuration."
+	read -r -p "[Y/n] >> " flatpakInput
+	case $flatpakInput in
+		[Yy])
+			flatpak override --filesystem=~/.themes:ro
+			flatpak override --filesystem=xdg-config/gtk-4.0:ro
+			flatpak override --filesystem=xdg-config/gtk-3.0:ro
+			flatpak override --filesystem=/usr/share/themes:ro
+			;;
+		*)
+			echo "ABORTING!"
+			exit 0
+			;;
+}
+
+help() {
+    echo "Usage: $0 [--options]"
+    echo "example: $0 --help"
+    echo "available options:"
+    echo "--help            shows this help page"
+    echo "--reset           reverts the theming"
+    echo "--fp              sets up Flatpak overrides"
+}
+
 if [ -n "$1" ]; then
 	case $1 in
 		--help)
@@ -48,6 +74,8 @@ if [ -n "$1" ]; then
 			help;;
 		--reset)
 			reset;;
+		--fp)
+		    flatpakSupport;;
 	esac
 else
 	change
